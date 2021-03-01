@@ -2,6 +2,11 @@
 
 Web interface for [`fndr`](https://github.com/whatl3y/fndr) to manage your accounts stored in the [Jupiter blockchain](https://gojupiter.tech/) in a browser instead of the CLI.
 
+## Requirements
+
+- [Node.js](https://nodejs.org/en/) LTS
+- [Docker and Docker Compose](https://docs.docker.com/get-docker/)
+
 ## Install & Run
 
 If the container starts up as expected, you should be able to access the web server in a browser at `http://localhost:8000`
@@ -14,20 +19,19 @@ $
 $ # run tests
 $ npm test
 $
-$ # build app (also run this after making changes to source code)
+$ # build app (also runs after making changes to source code)
 $ npm run build
 $
 $ # run containers with mapped volumes to your local machine so you can
-$ # see changes to your app without rebuilding the container
-$ # each change.
+$ # see changes to your app without rebuilding the container each change.
 $ docker-compose -f docker-compose.dev.yml up
 ```
 
 ## Development
 
-I'd love for you to contribute to the project! Use the steps below to pull down the source code and build, and feel free to create PRs as you'd like.
+I'd love for you to contribute to the project! Use the steps above to pull down the source code, build, and run, and feel free to create PRs as you'd like.
 
-All PRs need to passing tests that test any additions or changes to existing code.
+All PRs need to passing tests for additions to and changes to existing code.
 
 # Tips w/ cryptocurrency
 

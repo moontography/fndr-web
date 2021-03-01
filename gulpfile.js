@@ -1,5 +1,10 @@
 const gulp = require('gulp')
 const nodemon = require('gulp-nodemon')
+const run = require('gulp-run')
+
+gulp.task('build', function() {
+  return run('npm run build').exec()
+})
 
 gulp.task('start', function(done) {
   const stream = nodemon({

@@ -1,53 +1,46 @@
-mixin updateConfigForm()
-  .field
-    label.label Name
-    .control
-      input.input(type='text', placeholder='Text input')
-  .field
-    label.label Username
-    .control.has-icons-left.has-icons-right
-      input.input.is-success(type='text', placeholder='Text input', value='bulma')
-      span.icon.is-small.is-left
-        i.fas.fa-user
-      span.icon.is-small.is-right
-        i.fas.fa-check
-    p.help.is-success This username is available
-  .field
-    label.label Email
-    .control.has-icons-left.has-icons-right
-      input.input.is-danger(type='email', placeholder='Email input', value='hello@')
-      span.icon.is-small.is-left
-        i.fas.fa-envelope
-      span.icon.is-small.is-right
-        i.fas.fa-exclamation-triangle
-    p.help.is-danger This email is invalid
-  .field
-    label.label Subject
-    .control
-      .select
-        select
-          option Select dropdown
-          option With options
-  .field
-    label.label Message
-    .control
-      textarea.textarea(placeholder='Textarea')
-  .field
-    .control
-      label.checkbox
-        input(type='checkbox')
-        |       I agree to the 
-        a(href='#') terms and conditions
-  .field
-    .control
-      label.radio
-        input(type='radio', name='question')
-        |       Yes
-      label.radio
-        input(type='radio', name='question')
-        |       No
-  .field.is-grouped
-    .control
-      button.button.is-link Submit
-    .control
-      button.button.is-link.is-light Cancel
+mixin updateConfigForm(configOptions=[])
+  form#config-json-upload.mb-4(
+    action='/'
+    enctype='multipart/form-data'
+    method='post')
+      .file
+        label.file-label
+          input.file-input(
+            type='file'
+            name='file'
+            onchange="document.getElementById('config-json-upload').submit()")
+          span.file-cta
+            span.file-icon
+              i.fas.fa-upload
+            span.file-label
+              | Upload raw JSON config here (optional)&mldr;
+
+  if configOptions && configOptions.length > 0
+    form(
+      action='/config'
+      method='post')
+        each conf in configOptions
+          if conf.type == 'header'
+            hr
+          .field(style=(conf.type == 'header') ? 'text-decoration: underline' : '')
+            label.label
+              div= conf.label
+              if conf.description
+                div(style='font-size: 0.6rem')= conf.description
+            .control
+              if !conf.type || conf.type == 'text' || conf.type == 'password'
+                input.input(
+                  type=conf.type || 'text'
+                  name=conf.name
+                  placeholder=conf.placeholder || conf.label
+                  value=conf.default || '')
+              else if conf.type == 'radio'
+                .control
+                  each choice in conf.choices
+                    label.radio
+                      input(type='radio' name=conf.name)
+                      span= choice.label
+        
+        .field.is-grouped.has-text-centered
+          .control
+            button.button.is-link(type="submit") Save

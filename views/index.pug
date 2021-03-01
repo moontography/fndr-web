@@ -1,8 +1,35 @@
 extends ./base.pug
 
-include ./mixins/updateConfigForm.pug
-
 block content 
-  div.has-background-light.p-4
-    h1.title fndr
-    +updateConfigForm()
+  if accounts
+    table.table.is-bordered.is-striped.is-fullwidth
+      thead
+        tr
+          th #
+          th Account
+          th Username
+          th Password/Secret
+          th Extra Information
+          th Jupiter Txn
+      tbody
+        if accounts.length === 0
+          tr
+            td(colspan="100%")
+              i No accounts found given the criteria...
+        else
+          each account, ind in accounts
+            tr
+              th= `${ind + 1}.`
+              td= account.name
+              td= account.username
+              td= account.password || '**********'
+              td= account.extra
+              td= account.meta
+              //- td
+              //-   a(
+              //-     href=""
+              //-     target="_blank"
+              //-     rel="noopener noreferrer")= account.meta
+
+  else
+    include ./includes/configForm.pug

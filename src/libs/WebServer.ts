@@ -1,9 +1,13 @@
 import http from 'http'
 import path from 'path'
 import bodyParser from 'body-parser'
+import cookieParser from 'cookie-parser'
 import express, { Request, Response, NextFunction } from 'express'
 import formidable from 'express-formidable'
 import bunyan from 'bunyan'
+import passport from 'passport'
+import passportJwt from '../passport/jwt'
+import { jwtAuthMiddleware } from './Jwt'
 import routes from '../routes'
 import config from '../config'
 
@@ -38,6 +42,8 @@ export default function WebServer(
 
       app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }))
       app.use(bodyParser.json({ limit: '10mb' }))
+      app.use(cookieParser(config.server.sessionSecret))
+      app.use(jwtAuthMiddleware)
 
       const formidableMiddleware = formidable({ multiples: true })
 
@@ -68,6 +74,12 @@ export default function WebServer(
         }
       })
 
+      //passport setup
+      const pjwt = passportJwt()
+      passport.use('jwt', new pjwt.strategy(pjwt.options, pjwt.handler))
+      passport.serializeUser((user: any, done: any) => done(null, user))
+      passport.deserializeUser((user: any, done: any) => done(null, user))
+
       // Express error handling
       app.use(function ExpressErrorHandler(
         err: any,
@@ -76,7 +88,8 @@ export default function WebServer(
         next: NextFunction
       ) {
         log.error('Express error handling', err)
-        res.redirect(err.redirectRoute || '/')
+        // res.redirect(err.redirectRoute || '/')
+        res.status(500).send(`${err.name} - ${err.message} - ${err.stack}`)
       })
 
       // Assume we'll listen in the primary app file via `sticky-cluster` module

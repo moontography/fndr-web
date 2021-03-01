@@ -1,0 +1,20 @@
+include ../mixins/updateConfigForm.pug
+
+div.has-background-light.p-4
+  div.mb-4
+    h1.has-text-centered.title.is-size-1 fndr
+    if hasFieldError
+      div.notification.is-danger.my-4
+        | Please be sure to enter all fields.
+    div
+      small
+        small
+          i
+            div.mb-4
+              | The following information will be stored securely encrypted in a cookie on your browser
+              | as a #[a(href="https://tools.ietf.org/html/rfc7519") JSON Web Token (JWT)]. This
+              | JWT is passed to our server with each request which is used to fetch data from
+              | the Jupiter blockchain and send back down to you in the browser.
+            div
+              | Note: This data #[strong IS NEVER] stored on any servers.
+  +updateConfigForm(configOptions)
