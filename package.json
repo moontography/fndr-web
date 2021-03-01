@@ -1,0 +1,55 @@
+{
+  "name": "fndr-web",
+  "version": "0.0.1",
+  "description": "Web interface for fndr to manage your accounts in a browser instead of the CLI.",
+  "engines": {
+    "node": ">=14"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/whatl3y/fndr-web"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "npx gulp start",
+    "start": "node dist/bin/app.js",
+    "test": "mocha --require ts-node/register --recursive './src/**/*.spec.ts'"
+  },
+  "author": "Lance Whatley <whatl3y@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "bunyan": "^1.8.15",
+    "dayjs": "^1.10.4",
+    "express": "^4.17.1",
+    "express-formidable": "^1.2.0",
+    "fndr": "^0.1.2",
+    "pug": "^3.0.2",
+    "throng": "^5.0.0",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/body-parser": "^1.19.0",
+    "@types/bunyan": "^1.8.6",
+    "@types/express": "^4.17.11",
+    "@types/express-formidable": "^1.0.4",
+    "@types/mocha": "^8.2.1",
+    "@types/node": "^14.14.8",
+    "@types/throng": "^5.0.0",
+    "@types/uuid": "^8.3.0",
+    "gulp": "^4.0.2",
+    "gulp-nodemon": "^2.5.0",
+    "mocha": "^8.3.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.0.5"
+  },
+  "keywords": [
+    "blockchain",
+    "cli",
+    "connector",
+    "jupiter",
+    "password",
+    "password manager",
+    "secrets"
+  ]
+}

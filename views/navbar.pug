@@ -1,0 +1,43 @@
+nav.navbar(role='navigation' aria-label='main navigation')
+  .navbar-brand
+    a.navbar-item(href='https://bulma.io')
+      img(
+        src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1'
+        width='28'
+        height='28')
+    a.navbar-burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbar-menu-dropdown')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+      span(aria-hidden='true')
+  #navbar-menu-dropdown.navbar-menu
+    .navbar-start
+      a.navbar-item(href="/")
+        | Home
+    .navbar-end
+      a.navbar-item(
+        href="https://gojupiter.tech"
+        target="_blank"
+        rel="noopener noreferrer")
+          | Jupiter Home
+    //-   a.navbar-item
+    //-     | Documentation
+    //-   .navbar-item.has-dropdown.is-hoverable
+    //-     a.navbar-link
+    //-       | More
+    //-     .navbar-dropdown
+    //-       a.navbar-item
+    //-         | About
+    //-       a.navbar-item
+    //-         | Jobs
+    //-       a.navbar-item
+    //-         | Contact
+    //-       hr.navbar-divider
+    //-       a.navbar-item
+    //-         | Report an issue
+    //- .navbar-end
+    //-   .navbar-item
+    //-     .buttons
+    //-       a.button.is-primary
+    //-         strong Sign up
+    //-       a.button.is-light
+    //-         | Log in

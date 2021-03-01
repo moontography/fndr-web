@@ -1,0 +1,9 @@
+.h-100 {
+  height: 100% !important;
+}
+
+@media screen and (min-width: 1408px) {
+  .container.small:not(.is-max-desktop):not(.is-max-widescreen) {
+    max-width: 800px;
+  }
+}
