@@ -1,20 +1,23 @@
 include ../mixins/updateConfigForm.pug
 
-div.has-background-light.p-4
-  div.mb-4
-    h1.has-text-centered.title.is-size-1 fndr
-    if hasFieldError
-      div.notification.is-danger.my-4
-        | Please be sure to enter all fields.
-    div
-      small
+div.container.small
+  div.has-background-light.p-4
+    div.mb-4
+      h1.has-text-centered.title.is-size-1
+        | fndr by
+        | #[img(src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1' style="width: 35px; height: 35px")]
+      if hasFieldError
+        div.notification.is-danger.my-4
+          | Please be sure to enter all fields.
+      div
         small
-          i
-            div.mb-4
-              | The following information will be stored securely encrypted in a cookie on your browser
-              | as a #[a(href="https://tools.ietf.org/html/rfc7519") JSON Web Token (JWT)]. This
-              | JWT is passed to our server with each request which is used to fetch data from
-              | the Jupiter blockchain and send back down to you in the browser.
-            div
-              | Note: This data #[strong IS NEVER] stored on any servers.
-  +updateConfigForm(configOptions)
+          small
+            i
+              div.mb-4
+                | The following information will be stored securely encrypted in a cookie on your browser
+                | as a #[a(href="https://tools.ietf.org/html/rfc7519") JSON Web Token (JWT)]. This
+                | JWT is passed to our server with each request which is used to fetch data from
+                | the Jupiter blockchain and send back down to you in the browser.
+              div
+                | Note: This data #[strong IS NEVER] stored on any servers.
+    +updateConfigForm(configOptions)

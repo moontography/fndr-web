@@ -1,0 +1,31 @@
+include ../mixins/accountListItem.pug
+
+#message-feed.column.is-4.messages.hero.is-fullheight
+  //- .action-buttons
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-chevron-down
+  //-     a.button.is-small
+  //-       i.fa.fa-refresh
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-inbox
+  //-     a.button.is-small
+  //-       i.fa.fa-exclamation-circle
+  //-     a.button.is-small
+  //-       i.fa.fa-trash-o
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-folder
+  //-     a.button.is-small
+  //-       i.fa.fa-tag
+  //-   .control.is-grouped.pg
+  //-     .title {{ paginate.pointer.start }}-{{ paginate.pointer.end }} of {{ paginate.total }}
+  //-     a.button.is-link
+  //-       i.fa.fa-chevron-left
+  //-     a.button.is-link
+  //-       i.fa.fa-chevron-right
+  h1.title Your Accounts
+  #inbox-messages.inbox-messages
+    each account in accounts
+      +accountListItem(account, selectedAccount && selectedAccount.id)

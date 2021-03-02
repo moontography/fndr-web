@@ -1,6 +1,8 @@
 import config from './config'
+import fallback from './fallback'
 import home from './home'
 import logout from './logout'
+import show from './show'
 
 // export interface IFile {
 //   name: string
@@ -9,4 +11,4 @@ import logout from './logout'
 //   type: string
 // }
 
-export default [config, home, logout]
+export default [config, logout, show, home, fallback]

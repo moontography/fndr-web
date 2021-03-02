@@ -1,0 +1,58 @@
+include ../mixins/accountAttr.pug
+
+#message-pane.column.is-6.message.hero.is-fullheight
+  //- .action-buttons
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-inbox
+  //-     a.button.is-small
+  //-       i.fa.fa-exclamation-circle
+  //-     a.button.is-small
+  //-       i.fa.fa-trash-o
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-exclamation-circle
+  //-     a.button.is-small
+  //-       i.fa.fa-trash-o
+  //-   .control.is-grouped
+  //-     a.button.is-small
+  //-       i.fa.fa-folder
+  //-     a.button.is-small
+  //-       i.fa.fa-tag
+  .box.message-preview
+    if selectedAccount
+      .top
+        .avatar
+          img(src='https://placehold.it/128x128')
+        .address
+          .name= selectedAccount.name
+          .email= selectedAccount.username
+        hr
+        //- .content
+        +accountAttr('ID', selectedAccount.id)
+        
+        div.mb-4
+          div.subtitle.mb-0 Password
+          div
+            strong
+              if selectedAccount.password
+                div= selectedAccount.password
+              else if selectedAccount.shouldShowPassword
+                i (No password provided)
+              else
+                a(href="?password=true") (click to show)
+
+        +accountAttr('Extra Information', selectedAccount.extra || 'N/A')
+        
+        div.mb-4
+          div.subtitle.mb-0 Jupiter Txn
+          div
+            strong
+              a(
+                href=`https://explorer.gojupiter.tech/api/tx/${selectedAccount.meta}`
+                target="_blank"
+                rel="noopener noreferrer")= selectedAccount.meta
+    else
+      div.my-6.has-text-centered
+        h1.is-size-1
+          | #[i.fa.fa-user] No account selected...

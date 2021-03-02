@@ -1,0 +1,16 @@
+mixin accountListItem(account, selectedAccountId)
+  .card(class=(account.id === selectedAccountId) ? 'active' : '')
+    .card-content
+      a(href=`/show/${account.id}`)
+        .msg-header
+          span.msg-from
+            small= account.username
+          span.msg-timestamp
+          span.msg-attachment
+            i.fa.fa-user
+        .msg-subject
+          span.msg-subject
+            strong#fake-subject-1= account.name
+        if account.extra
+          .msg-snippet
+            p#fake-snippet-1= account.extra

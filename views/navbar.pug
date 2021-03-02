@@ -1,45 +1,29 @@
-nav.navbar(role='navigation' aria-label='main navigation')
-  .navbar-brand
-    a.navbar-item(href='https://bulma.io')
-      img(
-        src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1'
-        width='28'
-        height='28')
-    a.navbar-burger(role='button' aria-label='menu' aria-expanded='false' data-target='navbar-menu-dropdown')
-      span(aria-hidden='true')
-      span(aria-hidden='true')
-      span(aria-hidden='true')
-  #navbar-menu-dropdown.navbar-menu
-    .navbar-start
-      a.navbar-item(href="/")
-        | Home
+nav.navbar.has-shadow
+  .container
+    .navbar-brand
+      a.navbar-item(href='/')
+        img.mr-2(
+          src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1'
+          style="height: 100%; width: auto")
+        | fndr by Jupiter
+      .navbar-burger.burger(data-target='nav-menu-dropdown')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
+        span(aria-hidden='true')
     .navbar-end
-      a.navbar-item(
-        href="https://jpr.gojupiter.tech"
-        target="_blank"
-        rel="noopener noreferrer")
-          | Jupiter
-      a.navbar-item(href="/logout")
-        i.fa.fa-sign-out-alt
-    //-   a.navbar-item
-    //-     | Documentation
-    //-   .navbar-item.has-dropdown.is-hoverable
-    //-     a.navbar-link
-    //-       | More
-    //-     .navbar-dropdown
-    //-       a.navbar-item
-    //-         | About
-    //-       a.navbar-item
-    //-         | Jobs
-    //-       a.navbar-item
-    //-         | Contact
-    //-       hr.navbar-divider
-    //-       a.navbar-item
-    //-         | Report an issue
-    //- .navbar-end
-    //-   .navbar-item
-    //-     .buttons
-    //-       a.button.is-primary
-    //-         strong Sign up
-    //-       a.button.is-light
-    //-         | Log in
+      .navbar-item.has-dropdown.is-hoverable
+        a.navbar-link
+          div= address || ''
+        .navbar-dropdown
+          a.navbar-item(
+            href="https://jpr.gojupiter.tech"
+            target="_blank"
+            rel="noopener noreferrer")
+              | Jupiter
+          //- a.navbar-item
+          //-   | Profile
+          //- a.navbar-item
+          //-   | Settings
+          hr.navbar-divider
+          a.navbar-item(href='/logout')
+            | #[i.fa.fa-sign-out-alt] Logout

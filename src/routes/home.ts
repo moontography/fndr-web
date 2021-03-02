@@ -58,9 +58,12 @@ export default {
         hasFieldError,
         configOptions,
         accounts,
+        address: req.session.fndrAddress,
       })
     } catch (err) {
-      res.status(500).send(`${err.name} - ${err.message} - ${err.stack}`)
+      // res.status(500).send(`${err.name} - ${err.message} - ${err.stack}`)
+      console.error(`${err.name} - ${err.message} - ${err.stack}`)
+      res.redirect('/')
     }
   },
 }
