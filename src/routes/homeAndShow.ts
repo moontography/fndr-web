@@ -16,9 +16,10 @@ export default function({ log, redis }: IRouteOpts): IRoute {
     formidable: true,
 
     async handler(req: Request & IStringMap, res: Response) {
-      let selectedAccount: undefined | IStringMap = undefined
-      let accounts: undefined | IStringMap[] = undefined
-      let configOptions: undefined | IStringMap = undefined
+      let selectedAccount: undefined | IStringMap
+      let accounts: undefined | IStringMap[]
+      let configOptions: undefined | IStringMap
+      let hasUploadedConfig: undefined | boolean
 
       const { uuid } = req.params
       const { add: didAddAccount, error, password, query } = req.query
@@ -66,6 +67,7 @@ export default function({ log, redis }: IRouteOpts): IRoute {
             try {
               newConf = JSON.parse(confJson)
               configOptions = getConfigOptions(newConf)
+              hasUploadedConfig = true
             } catch (err) {
               configOptions = await defaultConfOptions()
             }
@@ -80,6 +82,7 @@ export default function({ log, redis }: IRouteOpts): IRoute {
           accounts,
           hasFieldError,
           configOptions,
+          hasUploadedConfig,
           selectedAccount: selectedAccount
             ? { ...selectedAccount, shouldShowPassword }
             : null,

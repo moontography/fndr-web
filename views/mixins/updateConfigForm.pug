@@ -20,6 +20,10 @@ mixin updateConfigForm(configOptions=[])
               i.fas.fa-upload
             span.file-label
               | Upload raw JSON config here (optional)&mldr;
+  if hasUploadedConfig
+    div.notification.is-success.my-4
+      | Successfully uploaded your configuration. Please review below and click the Save button
+      | to login to fndr.
 
   hr(style="height: 1px")
 

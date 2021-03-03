@@ -1,11 +1,16 @@
 include ../mixins/updateConfigForm.pug
 
+section.hero.is-primary
+  .hero-body.has-text-centered
+    p.title.is-flex.is-align-items-centered.is-justify-content-center
+      | fndr by
+      | #[img.ml-2(src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1' style="width: 35px; height: 35px")]
+    p.subtitle
+      | Secure, decentralized password manager to manage all your accounts that are stored in the Jupiter blockchain.
+
 div.container.small
   div.has-background-light.p-4
     div.mb-4
-      h1.has-text-centered.title.is-size-1
-        | fndr by
-        | #[img(src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1' style="width: 35px; height: 35px")]
       h2.has-text-centered.subtitle
         | Configure your JUP account
       if hasFieldError
@@ -18,7 +23,7 @@ div.container.small
           small
             i
               div.mb-4
-                | The following information will be stored securely encrypted in a cookie on your browser
+                | The following information will be stored securely in your browser
                 | as a #[a(href="https://tools.ietf.org/html/rfc7519") JSON Web Token (JWT)]. This
                 | JWT is passed to our server with each request which is used to fetch data from
                 | the Jupiter blockchain.
