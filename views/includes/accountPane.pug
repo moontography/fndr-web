@@ -22,11 +22,15 @@ include ../mixins/accountAttr.pug
   .box.message-preview
     if selectedAccount
       .top
-        .avatar
-          img(src='https://placehold.it/128x128')
-        .address
-          .name= selectedAccount.name
-          .email= selectedAccount.username
+        .is-flex.is-align-items-center
+          .avatar
+            img(src='https://placehold.it/128x128')
+          .address
+            .name= selectedAccount.name
+            .email= selectedAccount.username
+          div(style="margin-left: auto")
+            a(href=`/update/${selectedAccount.id}`)
+              i.fa.fa-edit
         hr
         //- .content
         +accountAttr('ID', selectedAccount.id)

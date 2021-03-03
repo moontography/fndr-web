@@ -46,7 +46,8 @@ export function getConfigOptions({
     // },
     {
       type: 'header',
-      label: `The following was just generated and will be funded with a very small amount of $JUP to support storing account information in transactions from this account. You can override this with another account if you'd like.`,
+      label: `fndr Account`,
+      description: `The following was just generated and will be funded with a very small amount of $JUP to support storing account information in transactions from this account. You can override this with another account if you'd like.`,
     },
     {
       name: 'fndrAddress',

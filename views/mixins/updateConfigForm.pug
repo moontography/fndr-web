@@ -22,9 +22,9 @@ mixin updateConfigForm(configOptions=[])
         each conf in configOptions
           if conf.type == 'header'
             hr
-          .field(style=(conf.type == 'header') ? 'text-decoration: underline' : '')
+          .field
             label.label
-              div= conf.label
+              div(style=(conf.type == 'header') ? 'text-decoration: underline' : '')= conf.label
               if conf.description
                 div(style='font-size: 0.6rem')= conf.description
             .control
@@ -40,7 +40,7 @@ mixin updateConfigForm(configOptions=[])
                     label.radio
                       input(type='radio' name=conf.name)
                       span= choice.label
-        
-        .field.is-grouped
+
+        .field.is-flex.is-justify-content-center
           .control
             button.button(type="submit") Save

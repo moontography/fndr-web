@@ -8,6 +8,7 @@ import bunyan from 'bunyan'
 import passport from 'passport'
 import passportJwt from '../passport/jwt'
 import { jwtAuthMiddleware } from './Jwt'
+import Redis from './Redis'
 import routes from '../routes'
 import config from '../config'
 
@@ -54,18 +55,24 @@ export default function WebServer(
       )
 
       // setup route handlers in the express app
-      routes.forEach(async (route) => {
+      routes.forEach(async (routeFact) => {
+        const route = routeFact({ log, redis: Redis })
         try {
           const handlerArgs = route.formidable
             ? [formidableMiddleware, route.handler]
             : [route.handler]
-          app[route.verb.toLowerCase() as 'all' | 'get' | 'post'](
-            route.path,
-            ...handlerArgs
-          )
-          log.debug(
-            `Successfully bound route to express; method: ${route.verb}; path: ${route.path}`
-          )
+
+          const routeAry =
+            route.path instanceof Array ? route.path : [route.path]
+          routeAry.forEach((routePath: string) => {
+            app[route.verb.toLowerCase() as 'all' | 'get' | 'post'](
+              routePath,
+              ...handlerArgs
+            )
+            log.debug(
+              `Successfully bound route to express; method: ${route.verb}; path: ${route.path}`
+            )
+          })
         } catch (err) {
           log.error(
             err,

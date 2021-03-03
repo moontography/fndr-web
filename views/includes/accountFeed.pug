@@ -25,6 +25,10 @@ include ../mixins/accountListItem.pug
   //-       i.fa.fa-chevron-left
   //-     a.button.is-link
   //-       i.fa.fa-chevron-right
+  if didAddAccount
+    div.notification.is-success.mb-4
+      | Successfully added a new account! It should show up
+      | shortly in your feed after the transaction is confirmed.
   h1.title Your Accounts
   #inbox-messages.inbox-messages
     each account in accounts

@@ -1,0 +1,76 @@
+extends ./base.pug
+
+block content 
+  div.container.small
+    div.has-background-light.p-4
+      div.mb-4
+        h1.has-text-centered.title.is-size-1
+          | Add/Update Account
+        
+        div.notification.is-warning.my-4
+          small
+            | After you enter your new/updated account information, it could take up to several
+            | minutes for your account to show up in fndr. We wait until the blockchain 
+            | transaction has completed to show the new account.
+      form(
+        action=account && account.id ? `/update/${account.id}` : '/add'
+        method='post')
+          if account && account.id
+            input(
+              type='hidden'
+              name='id'
+              value=account.id)
+            .field
+              label.label Updating Existing Account:
+              div.is-size-4= account.id
+
+          .field
+            label.label
+              div Account Name
+              div(style='font-size: 0.6rem') The name of the vendor or service for your new account.
+            .control
+              input.input(
+                type='text'
+                name="name"
+                placeholder="Account Name"
+                value=account && account.name)
+
+          .field
+            label.label
+              div Username
+              //- div(style='font-size: 0.6rem') The name of the vendor or service for your new account.
+            .control
+              input.input(
+                type='text'
+                name="username"
+                placeholder="Username"
+                value=account && account.username)
+          
+          .field
+            label.label
+              div Password
+              //- div(style='font-size: 0.6rem') The name of the vendor or service for your new account.
+            .control
+              input.input(
+                type='password'
+                name="password"
+                placeholder="Password"
+                value=account && account.password)
+
+          .field
+            label.label
+              div Extra Info
+              div(style='font-size: 0.6rem')
+                | Any extra information you'd like to add for this account. If there's any helpful
+                | metadata or otherwise that would be beneficial to have later, this is a good place
+                | to add it.
+            .control
+              input.input(
+                type='text'
+                name="extra"
+                placeholder="Extra Info"
+                value=account && account.extra)
+
+          .field.is-flex.is-justify-content-center
+            .control
+              button.button(type="submit") Save

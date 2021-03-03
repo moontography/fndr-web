@@ -6,6 +6,10 @@ export default {
     name: appName,
   },
 
+  redis: {
+    url: process.env.REDIS_URL || 'redis://localhost:6379',
+  },
+
   server: {
     isProduction: process.env.NODE_ENV === 'production',
     port: process.env.PORT || 8000,
