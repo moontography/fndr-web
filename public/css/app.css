@@ -14,6 +14,12 @@
   }
 }
 
+@media screen and (max-width: 719px) {
+  .hero.is-fullheight {
+    min-height: 5vh;
+  }
+}
+
 section.hero.is-primary {
   background: #007039;
 }

@@ -1,15 +1,16 @@
-nav.navbar.has-shadow
-  .container
-    .navbar-brand
-      a.navbar-item(href='/')
-        img.mr-2(
-          src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1'
-          style="height: 100%; width: auto")
-        | fndr by Jupiter
-      .navbar-burger.burger(data-target='nav-menu-dropdown')
-        span(aria-hidden='true')
-        span(aria-hidden='true')
-        span(aria-hidden='true')
+nav.navbar.has-shadow(role="navigation")
+  //- .container
+  .navbar-brand
+    a.navbar-item(href='/')
+      img.mr-2(
+        src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1'
+        style="height: 100%; width: auto")
+      | fndr by Jupiter
+    //- .navbar-burger.burger(data-target='nav-menu-dropdown')
+    //-   span(aria-hidden='true')
+    //-   span(aria-hidden='true')
+    //-   span(aria-hidden='true')
+  .navbar-menu(id="nav-menu-dropdown")
     .navbar-end
       .navbar-item.is-hoverable.px-0
         a.navbar-link.is-arrowless(
