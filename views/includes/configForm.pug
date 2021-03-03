@@ -23,5 +23,7 @@ div.container.small
                 | JWT is passed to our server with each request which is used to fetch data from
                 | the Jupiter blockchain.
               div
-                | Note: This data #[strong IS NEVER] stored on any of our servers.
+                | Note: This data #[strong IS NEVER] stored on our servers for longer than 30-60 seconds,
+                | which only occurs to support better user experience for temporary caching while your
+                | active in the application.
     +updateConfigForm(configOptions)
