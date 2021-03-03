@@ -20,7 +20,7 @@ export function getConfigOptions({
     {
       name: 'fundedAddress',
       label: 'Funded Address',
-      description: `The funded 'JUP-XXX' address that we'll use to transact and add encrypted account information to the Jupiter blockchain.`,
+      description: `The funded 'JUP-XXX' address that we'll use to fund (w/ a VERY tiny amount: 0.01 JUP) another account to add encrypted account information to the Jupiter blockchain.`,
       type: 'text',
       default: fundedAddress || '',
     },

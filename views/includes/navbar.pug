@@ -11,19 +11,37 @@ nav.navbar.has-shadow
         span(aria-hidden='true')
         span(aria-hidden='true')
     .navbar-end
-      .navbar-item.has-dropdown.is-hoverable
-        a.navbar-link
-          div= address || ''
-        .navbar-dropdown
-          a.navbar-item(
-            href="https://jpr.gojupiter.tech"
-            target="_blank"
-            rel="noopener noreferrer")
-              | Jupiter
-          //- a.navbar-item
-          //-   | Profile
-          //- a.navbar-item
-          //-   | Settings
-          hr.navbar-divider
-          a.navbar-item(href='/logout')
-            | #[i.fa.fa-sign-out-alt] Logout
+      .navbar-item.is-hoverable.px-0
+        a.navbar-link.is-arrowless(
+          href="https://github.com/whatl3y/fndr"
+          target="_blank"
+          rel="noopener noreferrer")
+            h1.is-size-3 f
+        a.navbar-link.is-arrowless(
+          href="https://github.com/whatl3y/fndr-web"
+          target="_blank"
+          rel="noopener noreferrer")
+            i.devicon-github-plain(style="font-size: 2rem")
+      .navbar-item.is-hoverable.px-0
+        a.navbar-link.is-arrowless(
+          href="https://twitter.com/themoontography"
+          target="_blank"
+          rel="noopener noreferrer")
+            i.fa.fa-twitter(style="font-size: 2rem")
+      if address
+        .navbar-item.has-dropdown.is-hoverable
+          a.navbar-link
+            div= address
+          .navbar-dropdown
+            a.navbar-item(
+              href="https://jpr.gojupiter.tech"
+              target="_blank"
+              rel="noopener noreferrer")
+                | Jupiter
+            //- a.navbar-item
+            //-   | Profile
+            //- a.navbar-item
+            //-   | Settings
+            hr.navbar-divider
+            a.navbar-item(href='/logout/confirm')
+              | #[i.fa.fa-sign-out-alt] Logout

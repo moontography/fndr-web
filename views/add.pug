@@ -5,13 +5,13 @@ block content
     div.has-background-light.p-4
       div.mb-4
         h1.has-text-centered.title.is-size-1
-          | Add/Update Account
+          | #[i.fa.fa-user] Add/Update Account
         
         div.notification.is-warning.my-4
           small
             | After you enter your new/updated account information, it could take up to several
             | minutes for your account to show up in fndr. We wait until the blockchain 
-            | transaction has completed to show the new account.
+            | transaction has been confirmed to show the new account.
       form(
         action=account && account.id ? `/update/${account.id}` : '/add'
         method='post')

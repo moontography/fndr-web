@@ -29,7 +29,15 @@ include ../mixins/accountListItem.pug
     div.notification.is-success.mb-4
       | Successfully added a new account! It should show up
       | shortly in your feed after the transaction is confirmed.
-  h1.title Your Accounts
+  h1.title #[i.fa.fa-user-secret] Your Accounts
+  div
+    form(action=`/` method="get")
+      div.field
+        input.input.is-medium(
+          type="text"
+          name="query"
+          value=searchQuery || ''
+          placeholder="Search for account(s)... [Enter] to search")
   #inbox-messages.inbox-messages
     each account in accounts
       +accountListItem(account, selectedAccount && selectedAccount.id)

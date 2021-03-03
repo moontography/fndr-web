@@ -4,9 +4,8 @@ import { Redis } from 'ioredis'
 import add from './add'
 import config from './config'
 import fallback from './fallback'
-import home from './home'
+import homeAndShow from './homeAndShow'
 import logout from './logout'
-import show from './show'
 
 // export interface IFile {
 //   name: string
@@ -15,7 +14,7 @@ import show from './show'
 //   type: string
 // }
 
-export default [add, config, logout, show, home, fallback]
+export default [add, config, logout, homeAndShow, fallback]
 
 export function baselineTemplateConfig(req: Request & IStringMap) {
   return {

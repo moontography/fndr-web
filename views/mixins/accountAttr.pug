@@ -1,4 +1,7 @@
-mixin accountAttr(label, value)
+mixin accountAttr(label, value, iconClass)
   div.mb-4
-    div.subtitle.mb-0= label
+    div.subtitle.mb-0
+      if iconClass
+        i.mr-2.fa(class=iconClass)
+      span= label
     div= value

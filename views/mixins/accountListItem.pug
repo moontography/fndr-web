@@ -1,16 +1,16 @@
 mixin accountListItem(account, selectedAccountId)
   .card(class=(account.id === selectedAccountId) ? 'active' : '')
     .card-content
-      a(href=`/show/${account.id}`)
+      a(href=`/show/${account.id}${queryString ? `?${queryString}` : ''}`)
         .msg-header
           span.msg-from
-            small= account.username
+            small #[i.fa.fa-id-card] #{account.username}
           span.msg-timestamp
           span.msg-attachment
             i.fa.fa-user
         .msg-subject
           span.msg-subject
-            strong#fake-subject-1= account.name
+            strong#fake-subject-1 #[i.fa.fa-user-circle] #{account.name}
         if account.extra
           .msg-snippet
-            p#fake-snippet-1= account.extra
+            p#fake-snippet-1 #[i.fa.fa-comments] #{account.extra}

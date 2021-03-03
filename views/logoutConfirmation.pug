@@ -1,0 +1,17 @@
+extends ./base.pug
+
+block content 
+  div.container.small
+    div.p-4
+      div.mb-4
+        div.notification.is-warning.my-6
+          div.is-size-4.mb-5
+            | Are you sure you want to logout? This will clear out your configuration
+            | which includes info about your JUP and fndr accounts, so make sure you
+            | have your account addresses and passphrases backed up if you want
+            | to recover your accounts in the future.
+          div.is-flex.is-justify-content-center
+            a.button.mr-2(href="/")
+              | Don't log me out! Go back
+            a.button.is-info(href="/logout")
+              | I'm sure, log me out

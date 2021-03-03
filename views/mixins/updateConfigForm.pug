@@ -1,5 +1,11 @@
 mixin updateConfigForm(configOptions=[])
-  form#config-json-upload.mb-4(
+  div.mb-2
+    small
+      small
+        | You can optionally upload the JSON configuration from the #[a(href="https://github.com/whatl3y/fndr") fndr CLI]
+        | here and autopoulate all the information below to sync your machine with this web interface.
+        | Please refer to the fndr docs for more info on #[code $ fndr file].
+  form#config-json-upload(
     action='/'
     enctype='multipart/form-data'
     method='post')
@@ -15,16 +21,23 @@ mixin updateConfigForm(configOptions=[])
             span.file-label
               | Upload raw JSON config here (optional)&mldr;
 
+  hr(style="height: 1px")
+
   if configOptions && configOptions.length > 0
     form(
       action='/config'
       method='post')
+        .field.is-flex.is-justify-content-center
+          .control
+            button.button.is-danger(type="submit") Save
         each conf in configOptions
           if conf.type == 'header'
             hr
           .field
             label.label
-              div(style=(conf.type == 'header') ? 'text-decoration: underline' : '')= conf.label
+              div(
+                class=(conf.type == 'header') ? 'is-size-3' : ''
+                style=(conf.type == 'header') ? 'text-decoration: underline' : '')= conf.label
               if conf.description
                 div(style='font-size: 0.6rem')= conf.description
             .control
@@ -43,4 +56,4 @@ mixin updateConfigForm(configOptions=[])
 
         .field.is-flex.is-justify-content-center
           .control
-            button.button(type="submit") Save
+            button.button.is-danger(type="submit") Save

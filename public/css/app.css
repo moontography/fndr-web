@@ -14,8 +14,9 @@
   }
 }
 
-.button.is-danger {
-  background: #007039;
+.button.is-danger,
+hr {
+  background-color: #007039;
 }
 
 /* inbox.css */

@@ -24,10 +24,11 @@ include ../mixins/accountAttr.pug
       .top
         .is-flex.is-align-items-center
           .avatar
-            img(src='https://placehold.it/128x128')
+            //- img(src='https://placehold.it/128x128')
+            i.fa.fa-3x.fa-user-secret
           .address
-            .name= selectedAccount.name
-            .email= selectedAccount.username
+            .name #[i.fa.fa-user-circle] #{selectedAccount.name}
+            .email #[i.fa.fa-id-card] #{selectedAccount.username}
           div(style="margin-left: auto")
             a(href=`/update/${selectedAccount.id}`)
               i.fa.fa-edit
@@ -36,7 +37,7 @@ include ../mixins/accountAttr.pug
         +accountAttr('ID', selectedAccount.id)
         
         div.mb-4
-          div.subtitle.mb-0 Password
+          div.subtitle.mb-0 #[i.fa.fa-lock] Password
           div
             strong
               if selectedAccount.password
@@ -44,12 +45,12 @@ include ../mixins/accountAttr.pug
               else if selectedAccount.shouldShowPassword
                 i (No password provided)
               else
-                a(href="?password=true") (click to show)
+                a(href=`?password=true&${queryString}`) (click to show)
 
-        +accountAttr('Extra Information', selectedAccount.extra || 'N/A')
+        +accountAttr('Extra Information', selectedAccount.extra || 'N/A', 'fa-comments')
         
         div.mb-4
-          div.subtitle.mb-0 Jupiter Txn
+          div.subtitle.mb-0 #[i.fa.fa-tag] Jupiter Txn
           div
             strong
               a(

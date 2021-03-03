@@ -6,9 +6,13 @@ div.container.small
       h1.has-text-centered.title.is-size-1
         | fndr by
         | #[img(src='https://i1.wp.com/gojupiter.tech/wp-content/uploads/2021/02/Jupiter-Logo-Def-Stroke-512px.png?fit=512%2C512&ssl=1' style="width: 35px; height: 35px")]
+      h2.has-text-centered.subtitle
+        | Configure your JUP account
       if hasFieldError
         div.notification.is-danger.my-4
-          | Please be sure to enter all fields.
+          | Please be sure to enter the correct information in all fields. It might be easier
+          | to generate the configuration from the #[code fndr] CLI then importing it here
+          | using the upload button below.
       div
         small
           small
@@ -17,7 +21,7 @@ div.container.small
                 | The following information will be stored securely encrypted in a cookie on your browser
                 | as a #[a(href="https://tools.ietf.org/html/rfc7519") JSON Web Token (JWT)]. This
                 | JWT is passed to our server with each request which is used to fetch data from
-                | the Jupiter blockchain and send back down to you in the browser.
+                | the Jupiter blockchain.
               div
-                | Note: This data #[strong IS NEVER] stored on any servers.
+                | Note: This data #[strong IS NEVER] stored on any of our servers.
     +updateConfigForm(configOptions)
