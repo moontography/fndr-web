@@ -44,6 +44,11 @@ There's a `Dockerfile` to allow you to build the container and deploy in any inf
 
 The `docker-compose.dev.yml` config used above maps your local machine's file system build folder to a volume in the container to ease development when making changes. It also starts the app using nodemon to listen for file changes to also make development easier. If you want to deploy `fndr-web` to production/a public URL, it's recommended to use the normal `docker-compose.yml` configuration to ensure the build and execution is entirely inside the container.
 
+```sh
+$ # no need to specify a file w/ `-f` since docker-compose.yml is the default
+$ docker-compose up
+```
+
 ### Heroku
 
 Heroku makes it dead simple to deploy web applications from Docker containers.
@@ -58,11 +63,6 @@ Heroku makes it dead simple to deploy web applications from Docker containers.
 ```sh
 $ heroku container:push web
 $ heroku container:release web
-```
-
-```sh
-$ # no need to specify a file w/ `-f` since docker-compose.yml is the default
-$ docker-compose up
 ```
 
 ## fndr Config Import
