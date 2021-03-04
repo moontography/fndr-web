@@ -39,5 +39,15 @@ include ../mixins/accountListItem.pug
           value=searchQuery || ''
           placeholder="Search for account(s)... [Enter] to search")
   #inbox-messages.inbox-messages
-    each account in accounts
-      +accountListItem(account, selectedAccount && selectedAccount.id)
+    if accounts.length === 0
+      .card
+        .card-content
+          .msg-header
+            span.msg-from
+              i
+                | No accounts added yet. If you logged in just now for the first time,
+                | please wait ~60 seconds before adding a new account so your
+                | fndr account is created and confirmed in the Jupiter blockchain.
+    else
+      each account in accounts
+        +accountListItem(account, selectedAccount && selectedAccount.id)
