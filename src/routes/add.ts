@@ -23,9 +23,19 @@ export default function({ log }: IRouteOpts): IRoute {
             if (!f) return false
             return f.name === 'add'
           })
+          const updateCommand = Commands.find((c) => {
+            const f = c(jupConnector)
+            if (!f) return false
+            return f.name === 'update'
+          })
           assert(addCommand, 'add command was not found')
+          assert(updateCommand, 'update command was not found')
 
-          await addCommand(jupConnector).execute(configJson, req.body)
+          if (req.body.id) {
+            await updateCommand(jupConnector).execute(configJson, req.body)
+          } else {
+            await addCommand(jupConnector).execute(configJson, req.body)
+          }
           return res.redirect('/?add=true')
         }
 
