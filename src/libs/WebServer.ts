@@ -9,12 +9,14 @@ import passport from 'passport'
 import passportJwt from '../passport/jwt'
 import { jwtAuthMiddleware } from './Jwt'
 import Redis from './Redis'
-import routes from '../routes'
+import routes, { IRouteOpts } from '../routes'
 import config from '../config'
 
 const log = bunyan.createLogger(config.logger.options as any)
 const app = express()
 const httpServer = new http.Server(app)
+
+const opts: IRouteOpts = { log, redis: Redis }
 
 app.disable('x-powered-by')
 
@@ -44,7 +46,7 @@ export default function WebServer(
       app.use(bodyParser.urlencoded({ extended: true, limit: '10mb' }))
       app.use(bodyParser.json({ limit: '10mb' }))
       app.use(cookieParser(config.server.sessionSecret))
-      app.use(jwtAuthMiddleware)
+      app.use(jwtAuthMiddleware(opts))
 
       const formidableMiddleware = formidable({ multiples: true })
 
@@ -56,7 +58,7 @@ export default function WebServer(
 
       // setup route handlers in the express app
       routes.forEach(async (routeFact) => {
-        const route = routeFact({ log, redis: Redis })
+        const route = routeFact(opts)
         try {
           const handlerArgs = route.formidable
             ? [formidableMiddleware, route.handler]
