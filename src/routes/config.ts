@@ -1,3 +1,4 @@
+import BigNumber from 'bignumber.js'
 import { Request, Response } from 'express'
 import { JupiterClient } from 'fndr'
 import { IRouteOpts, IRoute } from './'
@@ -39,12 +40,14 @@ export default function({ log }: IRouteOpts): IRoute {
           const fndrAccBalanceJup = await jupClient.getBalance(
             jupiterConfig.fndrAddress
           )
+          const fndrBal = new BigNumber(fndrAccBalanceJup)
           if (
-            fndrAccBalanceJup == '0' ||
-            fndrAccBalanceJup <
+            fndrBal.eq('0') ||
+            fndrBal.lt(
               jupClient.nqtToJup(
                 jupClient.config.minimumFndrAccountBalance.toString()
               )
+            )
           ) {
             await jupClient.sendMoney(jupiterConfig.fndrAddress)
           }
