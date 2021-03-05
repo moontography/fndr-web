@@ -1,7 +1,7 @@
 import BigNumber from 'bignumber.js'
 import { Request, Response } from 'express'
 import { JupiterClient } from 'fndr'
-import { IRouteOpts, IRoute } from './'
+import { IRouteOpts, IRoute, baselineTemplateConfig } from './'
 import { getJwtToken } from '../libs/Jwt'
 import config from '../config'
 
@@ -67,8 +67,12 @@ export default function({ log }: IRouteOpts): IRoute {
 
         res.redirect('/')
       } catch (err) {
+        const errText = `${err.name} - ${err.stack}`
         log.error(`error with config`, err)
-        res.redirect('/')
+        res.render('index', {
+          ...baselineTemplateConfig(req),
+          globalError: errText,
+        })
       }
     },
   }

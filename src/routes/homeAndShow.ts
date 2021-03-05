@@ -93,9 +93,25 @@ export default function({ log, redis }: IRouteOpts): IRoute {
             : null,
         })
       } catch (err) {
-        // res.status(500).send(`${err.name} - ${err.message} - ${err.stack}`)
-        log.error(`${err.name} - ${err.message} - ${err.stack}`)
-        res.redirect('/')
+        const errText = `${err.name} - ${err.stack}`
+        // res.status(500).send(errText)
+        log.error(errText)
+        res.render('index', {
+          didAddAccount: didAddAccount === 'true',
+          accounts,
+          hasFieldError: false,
+          configOptions,
+          hasUploadedConfig,
+          selectedAccount: selectedAccount
+            ? { ...selectedAccount, shouldShowPassword }
+            : null,
+          ...baselineTemplateConfig(req),
+          searchQuery: query,
+          queryString: hasQueryString
+            ? qs.stringify(req.query as IStringMap)
+            : null,
+          globalError: errText,
+        })
       }
     },
   }

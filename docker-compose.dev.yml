@@ -18,6 +18,6 @@ services:
     env_file:
       - .env
     environment:
-      - LOGGING_LEVEL=debug
+      - LOGGING_LEVEL=info
       - PORT=8000
       - REDIS_URL=redis://redis-server:6379

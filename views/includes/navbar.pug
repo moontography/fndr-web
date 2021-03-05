@@ -38,11 +38,13 @@ nav.navbar.has-shadow(role="navigation")
               href="https://jpr.gojupiter.tech"
               target="_blank"
               rel="noopener noreferrer")
-                | Jupiter
+                | #[i.mr-2.fa.fa-globe] Jupiter
+            a.navbar-item(
+              href="/download/config")
+                | #[i.mr-2.fa.fa-download] Download Config
             //- a.navbar-item
             //-   | Profile
             //- a.navbar-item
             //-   | Settings
-            hr.navbar-divider
-            a.navbar-item(href='/logout/confirm')
-              | #[i.fa.fa-sign-out-alt] Logout
+            a.navbar-item.is-text-danger(href='/logout/confirm')
+              | #[i.mr-2.fa.fa-sign-out] Logout

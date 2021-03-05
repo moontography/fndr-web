@@ -98,7 +98,7 @@ export default function WebServer(
       ) {
         log.error('Express error handling', err)
         // res.redirect(err.redirectRoute || '/')
-        res.status(500).send(`${err.name} - ${err.message} - ${err.stack}`)
+        res.status(500).send(`${err.name} - ${err.stack}`)
       })
 
       // Assume we'll listen in the primary app file via `sticky-cluster` module

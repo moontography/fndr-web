@@ -43,7 +43,7 @@ mixin updateConfigForm(configOptions=[])
                 class=(conf.type == 'header') ? 'is-size-3' : ''
                 style=(conf.type == 'header') ? 'text-decoration: underline' : '')= conf.label
               if conf.description
-                div(style='font-size: 0.6rem')= conf.description
+                div(style='font-size: 0.75rem')= conf.description
             .control
               if !conf.type || conf.type == 'text' || conf.type == 'password'
                 input.input(

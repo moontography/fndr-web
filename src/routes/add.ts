@@ -57,7 +57,11 @@ export default function({ log }: IRouteOpts): IRoute {
         res.render('add', { account, ...baselineTemplateConfig(req) })
       } catch (err) {
         log.error(`error with add command`, err)
-        res.redirect('/')
+        // res.redirect('/')
+        res.render('add', {
+          ...baselineTemplateConfig(req),
+          globalError: `${err.name} - ${err.stack}`,
+        })
       }
     },
   }

@@ -20,7 +20,7 @@ export function getConfigOptions({
     {
       name: 'fundedAddress',
       label: 'Funded Address',
-      description: `The funded 'JUP-XXX' address that we'll use to fund (w/ a VERY tiny amount: 0.01 JUP) another account to add encrypted account information to the Jupiter blockchain.`,
+      description: `The funded 'JUP-XXX' address that we'll use to fund (w/ a VERY tiny amount: 0.01 JUP) another account (see below) to add encrypted account information to the Jupiter blockchain.`,
       type: 'text',
       default: fundedAddress || '',
     },
@@ -38,16 +38,10 @@ export function getConfigOptions({
       type: 'password',
       default: encryptSecret || '',
     },
-    // {
-    //   name: 'allowAccountAddressCreation',
-    //   label: `Can we fund a new 'JUP-XXX' account with a tiny amount of $JUP to use to execute transactions to store your account information on the blockchain?`,
-    //   type: 'radio',
-    //   choices: [{ label: 'Yes' }, { label: 'No' }],
-    // },
     {
       type: 'header',
       label: `fndr Account`,
-      description: `The following was just generated and will be funded with a very small amount of $JUP to support storing account information in transactions from this account. You can override this with another account if you'd like.`,
+      description: `The following was auto-generated and will be funded with a very small amount of $JUP to support storing account information in transactions from this account. You can override this with another account including your funding account if you'd like.`,
     },
     {
       name: 'fndrAddress',
@@ -74,7 +68,7 @@ export function getConfigOptions({
       name: 'fndrAccount',
       label: 'fndr Account ID',
       description: `The account ID for the above address.`,
-      type: 'password',
+      type: 'text',
       default: fndrAccount,
     },
   ]

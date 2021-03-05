@@ -3,6 +3,7 @@ import { Request, Response } from 'express'
 import { Redis } from 'ioredis'
 import add from './add'
 import config from './config'
+import download from './download'
 import fallback from './fallback'
 import homeAndShow from './homeAndShow'
 import logout from './logout'
@@ -14,7 +15,7 @@ import logout from './logout'
 //   type: string
 // }
 
-export default [add, config, logout, homeAndShow, fallback]
+export default [add, config, download, logout, homeAndShow, fallback]
 
 export function baselineTemplateConfig(req: Request & IStringMap) {
   return {

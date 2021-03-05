@@ -21,6 +21,16 @@ html.h-100
 
     title fndr
   body.h-100
+    if globalError
+      section.hero.is-danger
+        .hero-body.has-text-centered.py-3
+          p.subtitle.is-flex.is-align-items-centered.is-justify-content-center.is-text-white
+            | The following error occurred. While this might be meaningless to you, we've noticed
+            | most errors/issues are due to not allowing transactions to complete on the blockchain.
+            | Please wait 3-5 minutes and try the operation again, and if it persists let us know!
+          div.mt-3
+            small
+            | #{globalError}
     include ./includes/navbar.pug
     //- div.container.small
     div
