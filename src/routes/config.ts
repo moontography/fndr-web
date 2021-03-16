@@ -32,6 +32,7 @@ export default function({ log }: IRouteOpts): IRoute {
         // and does not have a small amount of JUP to send accounts to the blockchain
         if (jupiterConfig.fundedAddress !== jupiterConfig.fndrAddress) {
           const jupClient = JupiterClient({
+            recordKey: '__jupiter-password-manager',
             server: jupiterConfig.jupiterServer,
             address: jupiterConfig.fundedAddress,
             passphrase: jupiterConfig.fundedAddressPassphrase,
