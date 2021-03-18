@@ -6,6 +6,7 @@ import { Commands, Connectors, getNewJupiterAddress } from 'fndr'
 import { Redis } from 'ioredis'
 import { IRouteOpts, IRoute, baselineTemplateConfig } from '.'
 import { getConfigOptions } from '../libs/Jupiter'
+import config from '../config'
 
 const jupConnector = Connectors.jupiter
 
@@ -66,7 +67,10 @@ export default function({ log, redis }: IRouteOpts): IRoute {
             let newConf
             try {
               newConf = JSON.parse(confJson)
-              configOptions = getConfigOptions(newConf)
+              configOptions = getConfigOptions({
+                newConf,
+                server: config.jupiter.server,
+              })
               hasUploadedConfig = true
             } catch (err) {
               configOptions = await defaultConfOptions()
@@ -124,7 +128,7 @@ async function defaultConfOptions() {
     account,
     newSecretPhrase,
   } = await getNewJupiterAddress({
-    jupiterServer: `https://jpr.gojupiter.tech`,
+    jupiterServer: config.jupiter.server,
   })
   return getConfigOptions({
     fndrAddress: address,

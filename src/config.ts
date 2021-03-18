@@ -6,6 +6,10 @@ export default {
     name: appName,
   },
 
+  jupiter: {
+    server: process.env.JUPITER_SERVER || `https://jpr.gojupiter.tech`,
+  },
+
   redis: {
     url: process.env.REDIS_URL || 'redis://localhost:6379',
   },
