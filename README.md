@@ -14,7 +14,7 @@ Today we only support the Jupiter connector with this UI, but will support other
 If the container starts up as expected, you should be able to access the web server in a browser at `http://localhost:8000`
 
 ```sh
-$ git clone https://github.com/whatl3y/fndr-web
+$ git clone https://github.com/moontography/fndr-web
 $ cd fndr-web
 $ npm install
 $
