@@ -2,11 +2,11 @@ import assert from 'assert'
 import net from 'net'
 import WebServer from './WebServer'
 
-describe('WebServer', function () {
+describe('WebServer', function() {
   const port = 8888
   const [, startServer] = WebServer(port)
 
-  it(`should create a server listening on port: ${port}`, async function () {
+  it(`should create a server listening on port: ${port}`, async function() {
     ;(startServer as any)()
 
     // We have to initiate listening on the port since the clustering

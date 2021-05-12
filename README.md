@@ -1,6 +1,6 @@
 # fndr-web
 
-Web interface for [`fndr`](https://github.com/whatl3y/fndr) to manage your accounts stored in the [Jupiter blockchain](https://gojupiter.tech/) in a browser instead of the CLI.
+Web interface for [`fndr`](https://github.com/moontography/fndr) to manage your accounts stored in the [Jupiter blockchain](https://gojupiter.tech/) in a browser instead of the CLI.
 
 Today we only support the Jupiter connector with this UI, but will support others down the road.
 
